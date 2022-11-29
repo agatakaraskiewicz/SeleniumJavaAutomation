@@ -25,7 +25,7 @@ public class DropdownPractiseTest extends DropdownsPractisePageObjects {
 
     @Test
     @Tag("static_dropdown")
-    @DisplayName("Verify if there is a possibility to change currency to USD")
+    @DisplayName("Verify if there is a possibility to change currency")
     public void staticCurrencyDropdownWithSelect() {
         step("Check the tab has correct name", () -> {
             String title = driver.getTitle();
@@ -39,7 +39,7 @@ public class DropdownPractiseTest extends DropdownsPractisePageObjects {
             assertEquals(url, URL);
         });
 
-        step("step", () -> {
+        step("Change currency to USD and verify if the change was applied", () -> {
             WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(CURRENCY_DROPDOWN_XPATH));
             Select currencyDropdown = new Select(staticCurrencyDropdown);
             currencyDropdown.selectByIndex(3);

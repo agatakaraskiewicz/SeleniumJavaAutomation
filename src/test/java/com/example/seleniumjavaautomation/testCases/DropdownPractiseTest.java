@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Tag;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 
+import java.util.stream.IntStream;
+
 import static com.example.seleniumjavaautomation.library.Browser.*;
 import static io.qameta.allure.Allure.step;
 
@@ -36,10 +38,9 @@ public class DropdownPractiseTest {
     public void staticCurrencyDropdownWithSelect() {
 
         step("Change currency to and verify if the change was applied (by id of the option)", () -> {
-            dropdownPractisePage.changeStaticCurrencyByIndex(3);
-            dropdownPractisePage.changeStaticCurrencyByIndex(1);
-            dropdownPractisePage.changeStaticCurrencyByIndex(0);
-            dropdownPractisePage.changeStaticCurrencyByIndex(2);
+            IntStream.range(0,4).forEachOrdered(currencyIndex -> {
+                dropdownPractisePage.changeStaticCurrencyByIndex(currencyIndex);
+            });
         });
 
         step("Change currency to 'Select' and verify if the change was applied (by value of the option)", () -> {

@@ -26,9 +26,6 @@ public class DropdownPractiseTest {
     @Tag("static_dropdown")
     @DisplayName("Verify if there is a possibility to change currency")
     public void staticCurrencyDropdownWithSelect() {
-        step("Check the tab has correct name", () -> {
-            Browser.checkTitle(DropdownsPractiseData.PAGE_TITLE);
-        });
 
         step("Check if the url is correct", () -> {
             Browser.checkUrl(DropdownsPractiseData.URL);
@@ -36,6 +33,22 @@ public class DropdownPractiseTest {
 
         step("Change currency to USD and verify if the change was applied (by id of the option)", () -> {
             dropdownPractisePage.changeStaticCurrencyByIndex(3);
+        });
+
+        step("Change currency to INR and verify if the change was applied (by id of the option)", () -> {
+            dropdownPractisePage.changeStaticCurrencyByIndex(1);
+        });
+
+        step("Change currency to 'Select' and verify if the change was applied (by id of the option)", () -> {
+            dropdownPractisePage.changeStaticCurrencyByIndex(0);
+        });
+
+        step("Change currency to AED and verify if the change was applied (by id of the option)", () -> {
+            dropdownPractisePage.changeStaticCurrencyByIndex(2);
+        });
+
+        step("Change currency to 'Select' and verify if the change was applied (by value of the option)", () -> {
+            dropdownPractisePage.changeStaticCurrencyByValue("AED");
         });
 
     }

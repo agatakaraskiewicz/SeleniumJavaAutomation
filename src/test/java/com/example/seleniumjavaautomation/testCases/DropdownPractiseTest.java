@@ -20,16 +20,20 @@ public class DropdownPractiseTest {
         Browser.StartBrowser("Chrome", DropdownsPractiseData.URL);
         //initialize Web Elements
         dropdownPractisePage = PageFactory.initElements(Browser.getDriver(), DropdownsPractisePage.class);
+
+        step("Check if the tab has correct name", () -> {
+            Browser.checkTitle(DropdownsPractiseData.PAGE_TITLE);
+        });
+
+        step("Check if the url is correct", () -> {
+            Browser.checkUrl(DropdownsPractiseData.URL);
+        });
     }
 
     @Test
     @Tag("static_dropdown")
     @DisplayName("Verify if there is a possibility to change currency")
     public void staticCurrencyDropdownWithSelect() {
-
-        step("Check if the url is correct", () -> {
-            Browser.checkUrl(DropdownsPractiseData.URL);
-        });
 
         step("Change currency to USD and verify if the change was applied (by id of the option)", () -> {
             dropdownPractisePage.changeStaticCurrencyByIndex(3);

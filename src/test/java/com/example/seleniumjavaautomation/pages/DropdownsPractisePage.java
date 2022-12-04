@@ -37,6 +37,22 @@ public class DropdownsPractisePage {
         Select currencyDropdown = new Select(staticCurrencyDropdown);
         currencyDropdown.selectByValue(currencyValue);
         switch (currencyValue){
+            case "INR" :
+                assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "INR");
+                break;
+            case "AED" :
+                assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "AED");
+                break;
+            case "USD" :
+                assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "USD");
+                break;
+        }
+    }
+
+    public void changeStaticCurrencyByText(String currencyText){
+        Select currencyDropdown = new Select(staticCurrencyDropdown);
+        currencyDropdown.selectByVisibleText(currencyText);
+        switch (currencyText){
             case "Select" :
                 assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "Select");
                 break;

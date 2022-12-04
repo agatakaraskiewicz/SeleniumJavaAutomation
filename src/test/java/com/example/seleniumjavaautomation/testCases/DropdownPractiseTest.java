@@ -37,14 +37,23 @@ public class DropdownPractiseTest {
     @DisplayName("Verify if there is a possibility to change currency")
     public void staticCurrencyDropdownWithSelect() {
 
-        step("Change currency to and verify if the change was applied (by id of the option)", () -> {
+        step("Change currency to each available option and verify if the change was applied (by id of the option)", () -> {
             IntStream.range(0,4).forEachOrdered(currencyIndex -> {
                 dropdownPractisePage.changeStaticCurrencyByIndex(currencyIndex);
             });
         });
 
-        step("Change currency to 'Select' and verify if the change was applied (by value of the option)", () -> {
+        step("Change currency to each available and verify if the change was applied (by value of the option)", () -> {
             dropdownPractisePage.changeStaticCurrencyByValue("AED");
+            dropdownPractisePage.changeStaticCurrencyByValue("USD");
+            dropdownPractisePage.changeStaticCurrencyByValue("INR");
+        });
+
+        step("Change currency to each available and verify if the change was applied (by visible text of the option)", () -> {
+            dropdownPractisePage.changeStaticCurrencyByText("Select");
+            dropdownPractisePage.changeStaticCurrencyByText("AED");
+            dropdownPractisePage.changeStaticCurrencyByText("USD");
+            dropdownPractisePage.changeStaticCurrencyByText("INR");
         });
 
     }

@@ -1,6 +1,6 @@
 package com.example.seleniumjavaautomation.testCases;
 
-import com.example.seleniumjavaautomation.pages.DropdownsPractisePage;
+import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.openqa.selenium.By;
@@ -18,7 +18,7 @@ public class DropdownPractiseTest {
 
     @BeforeClass
     public void openBrowser() {
-        driver = StartBrowser("Chrome", DropdownsPractisePage.URL);
+        driver = StartBrowser("Chrome", DropdownsPractiseData.URL);
     }
 
     @Test
@@ -28,31 +28,31 @@ public class DropdownPractiseTest {
         step("Check the tab has correct name", () -> {
             String title = driver.getTitle();
             System.out.println(title);
-            assertEquals(title, DropdownsPractisePage.PAGE_TITLE);
+            assertEquals(title, DropdownsPractiseData.PAGE_TITLE);
         });
 
         step("Check if the url is correct", () -> {
             String url = driver.getCurrentUrl();
             System.out.println(url);
-            assertEquals(url, DropdownsPractisePage.URL);
+            assertEquals(url, DropdownsPractiseData.URL);
         });
 
         step("Change currency to USD and verify if the change was applied (by id of the option)", () -> {
-            WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(DropdownsPractisePage.CURRENCY_DROPDOWN_XPATH));
+            WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(DropdownsPractiseData.CURRENCY_DROPDOWN_XPATH));
             Select currencyDropdown = new Select(staticCurrencyDropdown);
             currencyDropdown.selectByIndex(3);
             assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "USD");
         });
 
         step("Change currency to AED and verify if the change was applied (by the visible text)", () -> {
-            WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(DropdownsPractisePage.CURRENCY_DROPDOWN_XPATH));
+            WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(DropdownsPractiseData.CURRENCY_DROPDOWN_XPATH));
             Select currencyDropdown = new Select(staticCurrencyDropdown);
             currencyDropdown.selectByVisibleText("AED");
             assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "AED");
         });
 
         step("Change currency to AED and verify if the change was applied (by the value)", () -> {
-            WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(DropdownsPractisePage.CURRENCY_DROPDOWN_XPATH));
+            WebElement staticCurrencyDropdown = driver.findElement(new By.ByXPath(DropdownsPractiseData.CURRENCY_DROPDOWN_XPATH));
             Select currencyDropdown = new Select(staticCurrencyDropdown);
             currencyDropdown.selectByValue("INR");
             assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "INR");

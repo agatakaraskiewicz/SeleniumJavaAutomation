@@ -7,11 +7,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class DropdownsPractisePage {
     
     @FindBy(xpath = DropdownsPractiseData.CURRENCY_DROPDOWN_XPATH)
         private WebElement staticCurrencyDropdown;
+
+    @FindBy(xpath = DropdownsPractiseData.PASSENGERS_INPUT_XPATH)
+        private WebElement passengersInput;
+
+    @FindBy(xpath = DropdownsPractiseData.PASSENGERS_OPTIONS_XPATH)
+        private WebElement passengersOptions;
 
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
@@ -67,4 +74,11 @@ public class DropdownsPractisePage {
                 break;
         }
     }
+
+    public void openPassengersInput(){
+        passengersInput.click();
+        boolean check = passengersOptions.isDisplayed();
+        assertTrue(check);
+    }
+
 }

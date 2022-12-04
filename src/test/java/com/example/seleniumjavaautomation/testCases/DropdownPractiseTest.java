@@ -58,6 +58,15 @@ public class DropdownPractiseTest {
 
     }
 
+    @Test
+    @Tag("d")
+    @DisplayName("Verify if there is a possibility to pick number of passengers")
+    public void passengersDropdown() {
+        step("Click on the passengers input to open the drop-down menu", () -> {
+            dropdownPractisePage.openPassengersInput();
+        });
+    }
+
     @AfterClass
     public void closeBrowser() {
         closeDriver();

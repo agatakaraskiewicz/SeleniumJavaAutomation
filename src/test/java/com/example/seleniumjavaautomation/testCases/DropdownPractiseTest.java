@@ -60,12 +60,17 @@ public class DropdownPractiseTest {
     }
 
     @Test
-    @Tag("d")
+    @Tag("dynamic_dropdown")
     @DisplayName("Verify if there is a possibility to pick number of passengers")
     public void passengersDropdown() {
         step("Click on the passengers input, add 1 Adult and apply change", () -> {
             dropdownPractisePage.openPassengersInput();
             dropdownPractisePage.addOneAdultPassenger();
+            dropdownPractisePage.changeAmountOfAdultsTo(3);
+            dropdownPractisePage.changeAmountOfAdultsTo(9);
+            dropdownPractisePage.changeAmountOfAdultsTo(0);
+            dropdownPractisePage.changeAmountOfAdultsTo(5);
+            dropdownPractisePage.changeAmountOfAdultsTo(-1);
             dropdownPractisePage.applyPassengersChanges();
         });
     }

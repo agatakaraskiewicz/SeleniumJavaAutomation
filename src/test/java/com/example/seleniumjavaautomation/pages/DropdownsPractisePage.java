@@ -111,4 +111,23 @@ public class DropdownsPractisePage {
         assertFalse(passengersOptions.isDisplayed());
     }
 
+    //only after openPassengersInput()
+    //takes desired amount of adult passengers; checks what is initial number and while it is not equal the desired number
+    //it adds or subtracts passengers. If the provided amount is <= 0 then it sets the desired to the lowest possible
+    public void changeAmountOfAdultsTo(int desiredAmount) {
+        int initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
+
+        while (initialAdultsAmount != desiredAmount) {
+            if (initialAdultsAmount > desiredAmount && desiredAmount > 0){
+                subtractAdultPassengerButton.click();
+            } else if (initialAdultsAmount < desiredAmount && desiredAmount > 0){
+                addAdultPassengerButton.click();
+            } else {
+                //for now the lowest possible amount of adults is 1
+                desiredAmount = 1;
+            }
+            initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
+        }
+    }
+
 }

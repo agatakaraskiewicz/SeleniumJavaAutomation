@@ -44,6 +44,7 @@ public class DropdownPractiseTest {
         });
 
         step("Change currency to each available and verify if the change was applied (by value of the option)", () -> {
+            //no 'Select' option - it has no value assigned
             dropdownPractisePage.changeStaticCurrencyByValue("AED");
             dropdownPractisePage.changeStaticCurrencyByValue("USD");
             dropdownPractisePage.changeStaticCurrencyByValue("INR");
@@ -62,8 +63,10 @@ public class DropdownPractiseTest {
     @Tag("d")
     @DisplayName("Verify if there is a possibility to pick number of passengers")
     public void passengersDropdown() {
-        step("Click on the passengers input to open the drop-down menu", () -> {
+        step("Click on the passengers input, add 1 Adult and apply change", () -> {
             dropdownPractisePage.openPassengersInput();
+            dropdownPractisePage.addOneAdultPassenger();
+            dropdownPractisePage.applyPassengersChanges();
         });
     }
 

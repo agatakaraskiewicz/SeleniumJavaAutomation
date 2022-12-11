@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class DropdownsPractisePage {
     
@@ -29,12 +28,13 @@ public class DropdownsPractisePage {
         private WebElement currentAmountOfAdultPassengers;
 
     @FindBy(id = DropdownsPractiseData.PASSENGERS_DONE_BTN_ID)
-        private WebElement passengersOptionsBtn;
+        private WebElement passengersOptionsDoneBtn;
 
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
         currencyDropdown.selectByIndex(currencyIndex);
+        //different assertions for changed currency - depending on the argument provided
         switch (currencyIndex){
             case 0 :
                 assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "Select");
@@ -54,6 +54,7 @@ public class DropdownsPractisePage {
     public void changeStaticCurrencyByValue(String currencyValue){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
         currencyDropdown.selectByValue(currencyValue);
+        //different assertions for changed currency - depending on the argument provided
         switch (currencyValue){
             case "INR" :
                 assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "INR");
@@ -70,6 +71,7 @@ public class DropdownsPractisePage {
     public void changeStaticCurrencyByText(String currencyText){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
         currencyDropdown.selectByVisibleText(currencyText);
+        //different assertions for changed currency - depending on the argument provided
         switch (currencyText){
             case "Select" :
                 assertEquals(currencyDropdown.getFirstSelectedOption().getText(), "Select");
@@ -86,9 +88,27 @@ public class DropdownsPractisePage {
         }
     }
 
-    public void openPassengersInput(){
+    //clicks on the passengers input to open drop-down and then asserts if the drop-down is visible
+    public void openPassengersInput() throws InterruptedException {
         passengersInput.click();
+        //here is small sleep needed - otherwise the buttons are not active (needed for other methods)
+        Thread.sleep(1000);
         assertTrue(passengersOptions.isDisplayed());
+    }
+
+    //only after openPassengersInput()
+    //clicks on '+' button next to the ADULT option and asserts if the number of passengers changed
+    public void addOneAdultPassenger() {
+        int initialPassengerAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
+        addAdultPassengerButton.click();
+        assertEquals(Integer.parseInt(currentAmountOfAdultPassengers.getText()), initialPassengerAmount + 1);
+    }
+
+    //only after openPassengersInput()
+    //clicks on 'Done' button to apply the changes and asserts if passengers drop-down was closed
+    public void applyPassengersChanges() {
+        passengersOptionsDoneBtn.click();
+        assertFalse(passengersOptions.isDisplayed());
     }
 
 }

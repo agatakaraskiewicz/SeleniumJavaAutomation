@@ -124,7 +124,9 @@ public class DropdownsPractisePage {
                 addAdultPassengerButton.click();
             } else {
                 //for now the lowest possible amount of adults is 1
+                System.out.println("You try to have " + desiredAmount + " adult passengers");
                 desiredAmount = 1;
+                System.out.println("Your desired amount was set to 1 - this is the lowest possible");
             }
             initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
         }

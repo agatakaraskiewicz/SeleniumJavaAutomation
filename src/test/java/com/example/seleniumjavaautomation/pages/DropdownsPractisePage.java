@@ -1,7 +1,6 @@
 package com.example.seleniumjavaautomation.pages;
 
 import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -19,6 +18,18 @@ public class DropdownsPractisePage {
 
     @FindBy(xpath = DropdownsPractiseData.PASSENGERS_OPTIONS_XPATH)
         private WebElement passengersOptions;
+
+    @FindBy(id = DropdownsPractiseData.PASSENGERS_ADULT_ADD_ID)
+        private WebElement addAdultPassengerButton;
+
+    @FindBy(id = DropdownsPractiseData.PASSENGERS_ADULT_SUBTRACT_ID)
+        private WebElement subtractAdultPassengerButton;
+
+    @FindBy(id = DropdownsPractiseData.PASSENGERS_ADULT_AMOUNT_ID)
+        private WebElement currentAmountOfAdultPassengers;
+
+    @FindBy(id = DropdownsPractiseData.PASSENGERS_DONE_BTN_ID)
+        private WebElement passengersOptionsBtn;
 
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
@@ -77,8 +88,7 @@ public class DropdownsPractisePage {
 
     public void openPassengersInput(){
         passengersInput.click();
-        boolean check = passengersOptions.isDisplayed();
-        assertTrue(check);
+        assertTrue(passengersOptions.isDisplayed());
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.seleniumjavaautomation.pages;
 
 import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -29,6 +30,15 @@ public class DropdownsPractisePage {
 
     @FindBy(id = DropdownsPractiseData.PASSENGERS_DONE_BTN_ID)
         private WebElement passengersOptionsDoneBtn;
+
+    @FindBy(id = DropdownsPractiseData.DEPARTURE_CITY_INPUT_ID)
+        private WebElement departureCityInput;
+
+    @FindBy(xpath = DropdownsPractiseData.DEPARTURE_CITIES_LIST_XPATH)
+        private WebElement departureCitiesList;
+
+    @FindBy(id = DropdownsPractiseData.ARRIVAL_CITIES_LIST_ID)
+        private WebElement arrivalCitiesList;
 
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
@@ -136,6 +146,20 @@ public class DropdownsPractisePage {
             }
             initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
         }
+    }
+
+    public void openDepartureCityDropDown() {
+        departureCityInput.click();
+        assertTrue(departureCitiesList.isDisplayed());
+    }
+
+    public void pickDepartureCity(String city) throws InterruptedException {
+        departureCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + city + "')]")).click();
+        Thread.sleep(1000);
+        assertFalse(departureCitiesList.isDisplayed());
+        assertEquals(departureCityInput.getAttribute("selectedtext"), city);
+        assertTrue(arrivalCitiesList.isDisplayed());
+
     }
 
 }

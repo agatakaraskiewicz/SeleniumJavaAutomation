@@ -10,4 +10,7 @@ public class DropdownsPractiseData {
     public static final String PASSENGERS_ADULT_SUBTRACT_ID = "hrefDecAdt";
     public static final String PASSENGERS_ADULT_AMOUNT_ID = "spanAudlt";
     public static final String PASSENGERS_DONE_BTN_ID = "btnclosepaxoption";
+    public static final String DEPARTURE_CITY_INPUT_ID = "ctl00_mainContent_ddl_originStation1_CTXT";
+    public static final String DEPARTURE_CITIES_LIST_XPATH = "//div[@id='glsctl00_mainContent_ddl_originStation1_CTNR']";
+    public static final String ARRIVAL_CITIES_LIST_ID = "glsctl00_mainContent_ddl_destinationStation1_CTNR";
 }

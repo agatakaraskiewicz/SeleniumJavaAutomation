@@ -1,6 +1,6 @@
 package com.example.seleniumjavaautomation.testCases;
 
-import com.example.seleniumjavaautomation.core.GlobalMethods;
+import com.example.seleniumjavaautomation.library.GlobalMethods;
 import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
 import com.example.seleniumjavaautomation.library.Browser;
 import com.example.seleniumjavaautomation.pages.DropdownsPractisePage;
@@ -25,7 +25,7 @@ public class DropdownPractiseTest {
     @BeforeClass
     public void openBrowserAndInit() {
         Browser.StartBrowser("Chrome", DropdownsPractiseData.URL);
-        //initialize Web Elements
+        //initialize
         dropdownPractisePage = PageFactory.initElements(Browser.getDriver(), DropdownsPractisePage.class);
         globalMethods = PageFactory.initElements(Browser.getDriver(), GlobalMethods.class);
 

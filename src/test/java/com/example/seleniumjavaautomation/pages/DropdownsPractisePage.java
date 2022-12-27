@@ -114,6 +114,7 @@ public class DropdownsPractisePage {
     //only after openPassengersInput()
     //takes desired amount of adult passengers; checks what is initial number and while it is not equal the desired number
     //it adds or subtracts passengers. If the provided amount is <= 0 then it sets the desired to the lowest possible
+    //If the provided amount is >= 10 then it is set to the desired highest possible + console info
     public void changeAmountOfAdultsTo(int desiredAmount) {
         int initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
 

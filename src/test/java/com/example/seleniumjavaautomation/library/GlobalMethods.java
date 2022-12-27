@@ -1,4 +1,4 @@
-package com.example.seleniumjavaautomation.core;
+package com.example.seleniumjavaautomation.library;
 
 import java.util.concurrent.ThreadLocalRandom;
 

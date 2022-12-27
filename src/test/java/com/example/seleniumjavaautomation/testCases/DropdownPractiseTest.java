@@ -98,11 +98,12 @@ public class DropdownPractiseTest {
 
     @Test
     @Tag("dynamic_dropdown")
-    @DisplayName("Verify if there is a possibility to pick a departure city")
+    @DisplayName("Verify if there is a possibility to pick a departure/arrival city")
     public void changeDepartureCity() {
         step("Open the departure drop-down and change to Jaipur", () -> {
             dropdownPractisePage.openDepartureCityDropDown();
             dropdownPractisePage.pickDepartureCity("Jaipur (JAI)");
+            dropdownPractisePage.closeArrivalCityDropDown();
         });
 
     }

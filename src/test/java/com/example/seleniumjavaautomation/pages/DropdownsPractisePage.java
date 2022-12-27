@@ -40,6 +40,12 @@ public class DropdownsPractisePage {
     @FindBy(id = DropdownsPractiseData.ARRIVAL_CITIES_LIST_ID)
         private WebElement arrivalCitiesList;
 
+    @FindBy(id = DropdownsPractiseData.ARRIVAL_CITY_INPUT_ID)
+        private WebElement arrivalCityInput;
+
+    @FindBy(id = DropdownsPractiseData.ARRIVAL_CITY_INPUT_ARROW_ID)
+        private WebElement arrivalCityInputArrow;
+
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
@@ -160,6 +166,12 @@ public class DropdownsPractisePage {
         assertEquals(departureCityInput.getAttribute("selectedtext"), city);
         assertTrue(arrivalCitiesList.isDisplayed());
 
+    }
+
+    public void closeArrivalCityDropDown() throws InterruptedException {
+        arrivalCityInputArrow.click();
+        Thread.sleep(1000);
+        assertFalse(arrivalCitiesList.isDisplayed());
     }
 
 }

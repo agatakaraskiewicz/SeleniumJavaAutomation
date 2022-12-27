@@ -57,10 +57,10 @@ public class DropdownPractiseTest {
         });
 
         step("Change currency to each available and verify if the change was applied (by visible text of the option)", () -> {
-            dropdownPractisePage.changeStaticCurrencyByText("Select");
-            dropdownPractisePage.changeStaticCurrencyByText("AED");
-            dropdownPractisePage.changeStaticCurrencyByText("USD");
-            dropdownPractisePage.changeStaticCurrencyByText("INR");
+            List<String> availableCurrencyOptions = Arrays.asList("Select", "AED", "USD", "INR");
+            for (String currencyOption : availableCurrencyOptions) {
+                dropdownPractisePage.changeStaticCurrencyByText(currencyOption);
+            }
         });
 
     }
@@ -81,12 +81,12 @@ public class DropdownPractiseTest {
            dropdownPractisePage.applyPassengersChanges();
         });
 
-        step("Click on the passengers input, add 3 then change to 9 then change to 0 (it will be 1) then to 5 and then to -1 (it will be 1) Adult and apply change", () -> {
+        step("Click on the passengers input, add 3 then change to 9 then change to 0 (it will be 1) then to 5 and then to 7 Adults and apply change", () -> {
             dropdownPractisePage.openPassengersInput();
 
             //create a list of Adult's numbers and then iterate changing the amount
             List<Integer> amountOfAdultsForTest = Arrays.asList(
-                    3, 9, 0, 5, -1
+                    3, 9, 0, 5, 7
             );
             for (Integer num:amountOfAdultsForTest) {
                 dropdownPractisePage.changeAmountOfAdultsTo(num);

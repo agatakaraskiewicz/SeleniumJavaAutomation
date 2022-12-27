@@ -118,10 +118,15 @@ public class DropdownsPractisePage {
         int initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
 
         while (initialAdultsAmount != desiredAmount) {
-            if (initialAdultsAmount > desiredAmount && desiredAmount > 0){
+            if (initialAdultsAmount > desiredAmount && desiredAmount > 0 && desiredAmount < 10){
                 subtractAdultPassengerButton.click();
-            } else if (initialAdultsAmount < desiredAmount && desiredAmount > 0){
+            } else if (initialAdultsAmount < desiredAmount && desiredAmount > 0 && desiredAmount < 10){
                 addAdultPassengerButton.click();
+            } else if (desiredAmount >= 10) {
+                //for now highest possible amount of adults is 9
+                System.out.println("You try to have " + desiredAmount + " adult passengers");
+                desiredAmount = 9;
+                System.out.println("Your desired amount was set to 9 - this is the highest possible");
             } else {
                 //for now the lowest possible amount of adults is 1
                 System.out.println("You try to have " + desiredAmount + " adult passengers");

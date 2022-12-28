@@ -4,10 +4,8 @@ import com.example.seleniumjavaautomation.library.GlobalMethods;
 import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
 import com.example.seleniumjavaautomation.library.Browser;
 import com.example.seleniumjavaautomation.pages.DropdownsPractisePage;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,14 +20,17 @@ public class DropdownPractiseTest {
     private GlobalMethods globalMethods;
 
 
-    @BeforeClass
-    public void openBrowserAndInit() {
+    @BeforeEach
+    public void openBrowserAndCheck() {
+        //initialize WebDriver
         Browser.StartBrowser("Chrome", DropdownsPractiseData.URL);
-        //initialize
+
+        //initialize other used classes
         dropdownPractisePage = PageFactory.initElements(Browser.getDriver(), DropdownsPractisePage.class);
         globalMethods = PageFactory.initElements(Browser.getDriver(), GlobalMethods.class);
 
         step("Check if the tab has correct name", () -> {
+            System.out.println("BeforeEach");
             Browser.checkTitle(DropdownsPractiseData.PAGE_TITLE);
         });
 
@@ -37,6 +38,7 @@ public class DropdownPractiseTest {
             Browser.checkUrl(DropdownsPractiseData.URL);
         });
     }
+
 
     @Test
     @Tag("static_dropdown")
@@ -108,7 +110,7 @@ public class DropdownPractiseTest {
 
     }
 
-    @AfterClass
+    @AfterEach
     public void closeBrowser() {
         closeDriver();
     }

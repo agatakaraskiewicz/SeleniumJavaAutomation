@@ -30,7 +30,6 @@ public class DropdownPractiseTest {
         globalMethods = PageFactory.initElements(Browser.getDriver(), GlobalMethods.class);
 
         step("Check if the tab has correct name", () -> {
-            System.out.println("BeforeEach");
             Browser.checkTitle(DropdownsPractiseData.PAGE_TITLE);
         });
 

@@ -15,4 +15,6 @@ public class DropdownsPractiseData {
     public static final String ARRIVAL_CITIES_LIST_ID = "glsctl00_mainContent_ddl_destinationStation1_CTNR";
     public static final String ARRIVAL_CITY_INPUT_ID = "ctl00_mainContent_ddl_destinationStation1_CTXT";
     public static final String ARRIVAL_CITY_INPUT_ARROW_ID = "ctl00_mainContent_ddl_destinationStation1_CTXTaction";
+    public static final String COUNTRY_INPUT_ID = "autosuggest";
+    public static final String COUNTRY_AUTOSUGGESTION_LIST_XPATH = "//li[@class='ui-menu-item']";
 }

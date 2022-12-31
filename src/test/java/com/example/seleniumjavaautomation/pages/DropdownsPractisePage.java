@@ -1,10 +1,14 @@
 package com.example.seleniumjavaautomation.pages;
 
 import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
+import com.example.seleniumjavaautomation.library.GlobalMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.testng.Assert.*;
 
@@ -45,6 +49,12 @@ public class DropdownsPractisePage {
 
     @FindBy(id = DropdownsPractiseData.ARRIVAL_CITY_INPUT_ARROW_ID)
         private WebElement arrivalCityInputArrow;
+
+    @FindBy(id = DropdownsPractiseData.COUNTRY_INPUT_ID)
+        private WebElement countryInput;
+
+    @FindBy(xpath = DropdownsPractiseData.COUNTRY_AUTOSUGGESTION_LIST_XPATH)
+        private List<WebElement> countryAutosuggestionList;
 
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
@@ -172,6 +182,25 @@ public class DropdownsPractisePage {
         arrivalCityInputArrow.click();
         Thread.sleep(1000);
         assertFalse(arrivalCitiesList.isDisplayed());
+    }
+
+    public void countryTypeToSelectPoland() throws InterruptedException {
+        countryInput.sendKeys("pol");
+        Thread.sleep(3000);
+
+        //create list of actual and suggested countries and compare them
+        List<String> actualSuggestedList = GlobalMethods.makeListOfTextInElements(countryAutosuggestionList);
+        List<String> expectedSuggestedList = Arrays.asList("France Metropolitan", "French Polynesia", "Poland");
+        assertEquals(expectedSuggestedList, actualSuggestedList);
+
+        //iterate by WebElement list and click on Poland when found
+        for (WebElement countryOption:countryAutosuggestionList) {
+            if (countryOption.getText().equalsIgnoreCase("poland")) {
+                countryOption.click();
+                break;
+            }
+        }
+
     }
 
 }

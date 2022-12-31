@@ -101,12 +101,21 @@ public class DropdownPractiseTest {
     @Tag("dynamic_dropdown")
     @DisplayName("Verify if there is a possibility to pick a departure/arrival city")
     public void changeDepartureCity() {
-        step("Open the departure drop-down and change to Jaipur", () -> {
+        step("Open the departure drop-down and change to Jaipur, check if the arrival city dropdown opens automatically and close it", () -> {
             dropdownPractisePage.openDepartureCityDropDown();
             dropdownPractisePage.pickDepartureCity("Jaipur (JAI)");
             dropdownPractisePage.closeArrivalCityDropDown();
         });
 
+    }
+
+    @Test
+    @Tag("auto-suggestive_dropdown")
+    @DisplayName("Verify if auto-suggestive dropdown presents correct options to the User")
+    public void changeCountry() {
+        step("Input 'pol' into country input and check the suggested options", () -> {
+            dropdownPractisePage.countryTypeToSelectPoland();
+        });
     }
 
     @AfterEach

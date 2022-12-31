@@ -6,6 +6,7 @@ It roughly follows a very popular online Selenium training, however I decided to
 
 Characteristics:
 - Page-Object Model
-- usage of PageFactory
+- PageFactory
+- Allure steps
 - each @Test is run in a sepparate browser instance
 

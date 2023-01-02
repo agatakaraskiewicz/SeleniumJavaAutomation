@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import static org.testng.Assert.*;
 
@@ -55,6 +56,9 @@ public class DropdownsPractisePage {
 
     @FindBy(xpath = DropdownsPractiseData.COUNTRY_AUTOSUGGESTION_LIST_XPATH)
         private List<WebElement> countryAutosuggestionList;
+
+    @FindBy(xpath = DropdownsPractiseData.DISCOUNT_OPTIONS_CHECKBOXES_XPATH)
+        private WebElement discountOptionsCheckboxes;
 
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
@@ -201,6 +205,32 @@ public class DropdownsPractisePage {
             }
         }
 
+    }
+
+    public void discountOptionPickAndClick(String specialOption) {
+        specialOption = specialOption.toLowerCase(Locale.ROOT);
+        switch (specialOption) {
+            case "family and friends":
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).isSelected());
+                break;
+            case "senior citizen":
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_SENIOR_ID_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_SENIOR_ID_ENDING + ")]")).isSelected());
+                break;
+            case "indian armed forces":
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_INDIAN_AF_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_INDIAN_AF_ENDING + ")]")).isSelected());
+                break;
+            case "student":
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_STUDENT_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_STUDENT_ENDING + ")]")).isSelected());
+                break;
+            case "unaccompanied minor":
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).isSelected());
+                break;
+        }
     }
 
 }

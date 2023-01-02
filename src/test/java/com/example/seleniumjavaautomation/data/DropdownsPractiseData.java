@@ -17,4 +17,10 @@ public class DropdownsPractiseData {
     public static final String ARRIVAL_CITY_INPUT_ARROW_ID = "ctl00_mainContent_ddl_destinationStation1_CTXTaction";
     public static final String COUNTRY_INPUT_ID = "autosuggest";
     public static final String COUNTRY_AUTOSUGGESTION_LIST_XPATH = "//li[@class='ui-menu-item']";
+    public static final String DISCOUNT_OPTIONS_CHECKBOXES_XPATH = "//div[@id='discount-checkbox']";
+    public static final String DISCOUNT_FRIENDS_AND_FAM_ID_ENDING = "'friendsandfamily'";
+    public static final String DISCOUNT_SENIOR_ID_ENDING = "'SeniorCitizenDiscount'";
+    public static final String DISCOUNT_INDIAN_AF_ENDING = "'IndArm'";
+    public static final String DISCOUNT_STUDENT_ENDING = "'StudentDiscount'";
+    public static final String DISCOUNT_LONELY_MINOR_ENDING = "'Unmr'";
 }

@@ -118,6 +118,19 @@ public class DropdownPractiseTest {
         });
     }
 
+    @Test
+    @Tag("checkboxes")
+    @DisplayName("Verify if there is possibility to pick discount options")
+    public void pickDiscountOptions() {
+        step("Check 'Friends and Family' checkbox", () -> {
+            dropdownPractisePage.discountOptionPickAndClick("Family and Friends");
+            dropdownPractisePage.discountOptionPickAndClick("Senior Citizen");
+            dropdownPractisePage.discountOptionPickAndClick("Indian Armed Forces");
+            dropdownPractisePage.discountOptionPickAndClick("Student");
+            dropdownPractisePage.discountOptionPickAndClick("Unaccompanied Minor");
+        });
+    }
+
     @AfterEach
     public void closeBrowser() {
         closeDriver();

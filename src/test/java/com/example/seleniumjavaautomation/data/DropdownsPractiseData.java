@@ -24,4 +24,10 @@ public class DropdownsPractiseData {
     public static final String DISCOUNT_STUDENT_ENDING = "'StudentDiscount'";
     public static final String DISCOUNT_LONELY_MINOR_ENDING = "'Unmr'";
     public static final String DISCOUNT_CHECKBOXES_TYPE_XPATH = "//input[@type = 'checkbox']";
+    public static final String TRIP_ONEWAY_XPATH = "//input[@value = 'OneWay' and contains(@id, 'rbtnl_Trip')]";
+    public static final String TRIP_ROUND_XPATH = "//input[@value = 'RoundTrip' and contains(@id, 'rbtnl_Trip')]";
+    public static final String TRIP_MULTI_XPATH = "//input[@value = 'TripPlanner' and contains(@id, 'rbtnl_Trip')]";
+    public static final String DEPARTURE_DATE_BUTTON_XPATH = "//div[@id='marketCityPair_1']//following-sibling::div[@class='picker-first2']//descendant::button[@class = 'ui-datepicker-trigger']";
+    public static final String DATE_PICKER_ID = "ui-datepicker-div";
+    public static final String CURRENT_DATE_HIGHLIGHTED_XPATH = "//a[contains(@class, 'ui-state-highlight')]";
 }

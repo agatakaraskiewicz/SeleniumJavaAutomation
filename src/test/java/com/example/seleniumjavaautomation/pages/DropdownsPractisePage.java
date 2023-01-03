@@ -63,6 +63,21 @@ public class DropdownsPractisePage {
     @FindBy(xpath = DropdownsPractiseData.DISCOUNT_CHECKBOXES_TYPE_XPATH)
         private List<WebElement> discountCheckboxes;
 
+    @FindBy(xpath = DropdownsPractiseData.TRIP_ONEWAY_XPATH)
+        private WebElement oneWayTripRadio;
+
+    @FindBy(xpath = DropdownsPractiseData.TRIP_ROUND_XPATH)
+        private WebElement roundTripRadio;
+
+    @FindBy(xpath = DropdownsPractiseData.TRIP_MULTI_XPATH)
+        private WebElement multicityTripRadio;
+
+    @FindBy(xpath = DropdownsPractiseData.DEPARTURE_DATE_BUTTON_XPATH)
+        private WebElement departureDateButton;
+
+    @FindBy(id = DropdownsPractiseData.DATE_PICKER_ID)
+        private WebElement datePicker;
+
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
@@ -242,4 +257,27 @@ public class DropdownsPractisePage {
         assertEquals(discountCheckboxes.size(), expectedNumber);
     }
 
+    public void changeTripTypeTo(String newTripType) {
+        newTripType = newTripType.toLowerCase(Locale.ROOT);
+
+        switch (newTripType) {
+            case "one way":
+                oneWayTripRadio.click();
+                assertTrue(oneWayTripRadio.isSelected());
+                break;
+            case "round trip":
+                roundTripRadio.click();
+                assertTrue(roundTripRadio.isSelected());
+                break;
+            case "multicity":
+                multicityTripRadio.click();
+                assertTrue(multicityTripRadio.isSelected());
+                break;
+        }
+    }
+
+    public void changeDepartureDate() {
+        departureDateButton.click();
+        assertTrue(datePicker.isDisplayed());
+    }
 }

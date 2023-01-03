@@ -136,6 +136,20 @@ public class DropdownPractiseTest {
         });
     }
 
+    @Test
+    @Tag("radio_buttons")
+    @Tag("calendar")
+    @DisplayName("Verify if there is possibility to set dates of the trip")
+    public void changeDates() {
+        step("Change type of trip to 'Round Trip' to have both 'Departure date' and 'Return Date' calendars active", () -> {
+            dropdownPractisePage.changeTripTypeTo("Round Trip");
+        });
+
+        step("Change departure date to current date", () -> {
+            dropdownPractisePage.changeDepartureDate();
+        });
+    }
+
     @AfterEach
     public void closeBrowser() {
         closeDriver();

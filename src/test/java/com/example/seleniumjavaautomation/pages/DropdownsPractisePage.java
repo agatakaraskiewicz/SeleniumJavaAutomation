@@ -60,6 +60,9 @@ public class DropdownsPractisePage {
     @FindBy(xpath = DropdownsPractiseData.DISCOUNT_OPTIONS_CHECKBOXES_XPATH)
         private WebElement discountOptionsCheckboxes;
 
+    @FindBy(xpath = DropdownsPractiseData.DISCOUNT_CHECKBOXES_TYPE_XPATH)
+        private List<WebElement> discountCheckboxes;
+
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
@@ -231,6 +234,10 @@ public class DropdownsPractisePage {
                 assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).isSelected());
                 break;
         }
+    }
+
+    public void checkNumberOfCheckboxes(int expectedNumber) {
+        assertEquals(discountCheckboxes.size(), expectedNumber);
     }
 
 }

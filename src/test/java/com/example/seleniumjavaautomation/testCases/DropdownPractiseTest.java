@@ -122,6 +122,11 @@ public class DropdownPractiseTest {
     @Tag("checkboxes")
     @DisplayName("Verify if there is possibility to pick discount options")
     public void pickDiscountOptions() {
+
+        step("Check if there are 6 checkboxes on the page", () -> {
+            dropdownPractisePage.checkNumberOfCheckboxes(6);
+        });
+
         step("Check 'Friends and Family' checkbox", () -> {
             dropdownPractisePage.discountOptionPickAndClick("Family and Friends");
             dropdownPractisePage.discountOptionPickAndClick("Senior Citizen");

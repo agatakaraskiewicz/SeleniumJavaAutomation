@@ -23,4 +23,5 @@ public class DropdownsPractiseData {
     public static final String DISCOUNT_INDIAN_AF_ENDING = "'IndArm'";
     public static final String DISCOUNT_STUDENT_ENDING = "'StudentDiscount'";
     public static final String DISCOUNT_LONELY_MINOR_ENDING = "'Unmr'";
+    public static final String DISCOUNT_CHECKBOXES_TYPE_XPATH = "//input[@type = 'checkbox']";
 }

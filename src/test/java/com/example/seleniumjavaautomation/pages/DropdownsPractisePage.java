@@ -169,6 +169,8 @@ public class DropdownsPractisePage {
             }
             initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
         }
+        //this is kinda not necessary as the above loop will work until these values will be equal, but I feel it is nice to have assertions everywhere
+        assertEquals(desiredAmount, initialAdultsAmount);
     }
 
     public void openDepartureCityDropDown() {

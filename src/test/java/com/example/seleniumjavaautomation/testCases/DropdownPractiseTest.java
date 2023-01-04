@@ -162,6 +162,25 @@ public class DropdownPractiseTest {
         });
     }
 
+    @Test
+    @Tag("E2E")
+    @DisplayName("Verify if you can search for One Way Trip from Jaipur to Goa for 3 Adults")
+    public void searchOneWayJaipurGoa3Adults() {
+        step("Change trip type to 'One Way'", () -> {
+            dropdownPractisePage.changeTripTypeTo("One Way");
+        });
+
+        step("Change departure city to Jaipur", () -> {
+            dropdownPractisePage.openDepartureCityDropDown();
+            dropdownPractisePage.pickDepartureCity("Bangkok (BKK)");
+        });
+
+        step("Change arrival city to Goa", () -> {
+            //arrival city drop-down is opened automatically (asserted in previous step)
+            dropdownPractisePage.pickArrivalCity("Goa (GOI)");
+        });
+    }
+
     @AfterEach
     public void closeBrowser() {
         closeDriver();

@@ -42,7 +42,7 @@ public class DropdownsPractisePage {
     @FindBy(xpath = DropdownsPractiseData.DEPARTURE_CITIES_LIST_XPATH)
         private WebElement departureCitiesList;
 
-    @FindBy(id = DropdownsPractiseData.ARRIVAL_CITIES_LIST_ID)
+    @FindBy(xpath = DropdownsPractiseData.ARRIVAL_CITIES_LIST_XPATH)
         private WebElement arrivalCitiesList;
 
     @FindBy(id = DropdownsPractiseData.ARRIVAL_CITY_INPUT_ID)
@@ -202,13 +202,28 @@ public class DropdownsPractisePage {
         assertTrue(departureCitiesList.isDisplayed());
     }
 
-    public void pickDepartureCity(String city) throws InterruptedException {
-        departureCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + city + "')]")).click();
+    public void pickDepartureCity(String departureCity) throws InterruptedException {
+        departureCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + departureCity + "')]")).click();
         Thread.sleep(1000);
         assertFalse(departureCitiesList.isDisplayed());
-        assertEquals(departureCityInput.getAttribute("selectedtext"), city);
+        assertEquals(departureCityInput.getAttribute("selectedtext"), departureCity);
         assertTrue(arrivalCitiesList.isDisplayed());
 
+    }
+
+    public void pickArrivalCity(String arrivalCity) throws InterruptedException {
+        Thread.sleep(3000);
+        System.out.println("1");
+        arrivalCitiesList.click();
+        System.out.println("2");
+        System.out.println(arrivalCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + arrivalCity + "')]")));
+
+        arrivalCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + arrivalCity + "')]")).click();
+        Thread.sleep(1000);
+        System.out.println("3");
+        assertFalse(arrivalCitiesList.isDisplayed());
+        assertEquals(arrivalCityInput.getAttribute("selectedtext"), arrivalCity);
+        assertTrue(datePicker.isDisplayed());
     }
 
     public void closeArrivalCityDropDown() throws InterruptedException {
@@ -272,7 +287,6 @@ public class DropdownsPractisePage {
 
         switch (newTripType) {
             case "one way":
-
                 oneWayTripRadio.click();
                 assertTrue(oneWayTripRadio.isSelected());
                 assertTrue(checkReturnDateBoxState("not active"));

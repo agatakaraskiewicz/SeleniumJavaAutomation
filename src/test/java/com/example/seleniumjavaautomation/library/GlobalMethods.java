@@ -2,8 +2,13 @@ package com.example.seleniumjavaautomation.library;
 
 import org.openqa.selenium.WebElement;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import static java.time.ZoneOffset.UTC;
 
 public class GlobalMethods {
 
@@ -19,6 +24,14 @@ public class GlobalMethods {
             textList.add(element.getText());
         }
         return textList;
+    }
+
+    //method formats current date to look look like: Wed, Jan 04 2023 (it will use English names for days)
+    //useful for tests on changing departure date
+    public static String currentDateFormatter() {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, LLL dd yyyy", Locale.ENGLISH);
+        return date.format(formatter);
     }
 
 }

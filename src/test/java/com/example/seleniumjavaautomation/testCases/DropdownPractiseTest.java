@@ -139,14 +139,26 @@ public class DropdownPractiseTest {
     @Test
     @Tag("radio_buttons")
     @Tag("calendar")
-    @DisplayName("Verify if there is possibility to set dates of the trip")
-    public void changeDates() {
-        step("Change type of trip to 'Round Trip' to have both 'Departure date' and 'Return Date' calendars active", () -> {
-            dropdownPractisePage.changeTripTypeTo("Round Trip");
-        });
+    @DisplayName("Verify if there is possibility to set departure date to current day")
+    public void changeDepartureDateToCurrentDay() {
 
         step("Change departure date to current date", () -> {
-            dropdownPractisePage.changeDepartureDate();
+            dropdownPractisePage.changeDepartureDateToCurrent();
+        });
+    }
+
+    @Test
+    @Tag("radio_buttons")
+    @DisplayName("Verify if changing type of trip disables and enables calendar options")
+    public void changeTripType() {
+        step("Change type of trip to 'Round Trip' to have 'Return Date' calendar active", () -> {
+            dropdownPractisePage.changeTripTypeTo("Round Trip");
+            //we could have this assertion also here, but above .changeTripTypeTo has it built in
+            //Assertions.assertTrue(dropdownPractisePage.checkReturnDateBoxState("active"));
+        });
+
+        step("Change type of trip to 'One Way' to have 'Return Date' calendar not active", () -> {
+            dropdownPractisePage.changeTripTypeTo("One Way");
         });
     }
 

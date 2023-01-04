@@ -30,4 +30,6 @@ public class DropdownsPractiseData {
     public static final String DEPARTURE_DATE_BUTTON_XPATH = "//div[@id='marketCityPair_1']//following-sibling::div[@class='picker-first2']//descendant::button[@class = 'ui-datepicker-trigger']";
     public static final String DATE_PICKER_ID = "ui-datepicker-div";
     public static final String CURRENT_DATE_HIGHLIGHTED_XPATH = "//a[contains(@class, 'ui-state-highlight')]";
+    public static final String ACTUAL_DEPARTURE_DATE_ID = "view_fulldate_id_1";
+    public static final String RETURN_DATE_BOX_ID = "Div1";
 }

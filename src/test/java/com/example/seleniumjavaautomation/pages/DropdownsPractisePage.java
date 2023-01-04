@@ -78,6 +78,15 @@ public class DropdownsPractisePage {
     @FindBy(id = DropdownsPractiseData.DATE_PICKER_ID)
         private WebElement datePicker;
 
+    @FindBy(xpath = DropdownsPractiseData.CURRENT_DATE_HIGHLIGHTED_XPATH)
+        private WebElement currentDateHighlighted;
+
+    @FindBy(id = DropdownsPractiseData.ACTUAL_DEPARTURE_DATE_ID)
+        private WebElement actualDepartureDate;
+
+    @FindBy(id = DropdownsPractiseData.RETURN_DATE_BOX_ID)
+        private WebElement returnDateBox;
+
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
@@ -257,17 +266,21 @@ public class DropdownsPractisePage {
         assertEquals(discountCheckboxes.size(), expectedNumber);
     }
 
+    //method takes input and changes checked radio button; then it checks if the Return Date box is in correct state
     public void changeTripTypeTo(String newTripType) {
         newTripType = newTripType.toLowerCase(Locale.ROOT);
 
         switch (newTripType) {
             case "one way":
+
                 oneWayTripRadio.click();
                 assertTrue(oneWayTripRadio.isSelected());
+                assertTrue(checkReturnDateBoxState("not active"));
                 break;
             case "round trip":
                 roundTripRadio.click();
                 assertTrue(roundTripRadio.isSelected());
+                assertTrue(checkReturnDateBoxState("active"));
                 break;
             case "multicity":
                 multicityTripRadio.click();
@@ -276,8 +289,24 @@ public class DropdownsPractisePage {
         }
     }
 
-    public void changeDepartureDate() {
-        departureDateButton.click();
-        assertTrue(datePicker.isDisplayed());
+    public void changeDepartureDateToCurrent() {
+        //check if the date picker is present - if not, open it
+        if (!datePicker.isDisplayed()) {
+            departureDateButton.click();
+            assertTrue(datePicker.isDisplayed());
+        }
+
+        //click on the current date and verify if it was actually picked
+        currentDateHighlighted.click();
+        assertEquals(actualDepartureDate.getText(), GlobalMethods.currentDateFormatter());
+    }
+
+    //method checks if the state of the return date box is as expected; returns boolean; could be used as condition in assertions
+    public boolean checkReturnDateBoxState(String expectedState) {
+        if (expectedState == "active"){
+            return returnDateBox.getAttribute("style").contains("opacity: 1;");
+        } else { //not active
+            return returnDateBox.getAttribute("style").contains("opacity: 0.5;");
+        }
     }
 }

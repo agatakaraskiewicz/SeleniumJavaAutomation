@@ -34,4 +34,10 @@ public class GlobalMethods {
         return date.format(formatter);
     }
 
+    //method switches to alert, gets its text, checks if provided string appears in the alert's text and returns boolean
+    public boolean checkIfAlertContainsText(String expectedText) {
+        String actualAlertText = Browser.getDriver().switchTo().alert().getText();
+        return actualAlertText.contains(expectedText);
+    }
+
 }

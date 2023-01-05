@@ -1,6 +1,6 @@
 package com.example.seleniumjavaautomation.pages;
 
-import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
+import com.example.seleniumjavaautomation.data.DropdownsPracticeData;
 import com.example.seleniumjavaautomation.library.GlobalMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,81 +13,81 @@ import java.util.Locale;
 
 import static org.testng.Assert.*;
 
-public class DropdownsPractisePage {
+public class DropdownsPracticePage {
     
-    @FindBy(xpath = DropdownsPractiseData.CURRENCY_DROPDOWN_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.CURRENCY_DROPDOWN_XPATH)
         private WebElement staticCurrencyDropdown;
 
-    @FindBy(xpath = DropdownsPractiseData.PASSENGERS_INPUT_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.PASSENGERS_INPUT_XPATH)
         private WebElement passengersInput;
 
-    @FindBy(xpath = DropdownsPractiseData.PASSENGERS_OPTIONS_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.PASSENGERS_OPTIONS_XPATH)
         private WebElement passengersOptions;
 
-    @FindBy(id = DropdownsPractiseData.PASSENGERS_ADULT_ADD_ID)
+    @FindBy(id = DropdownsPracticeData.PASSENGERS_ADULT_ADD_ID)
         private WebElement addAdultPassengerButton;
 
-    @FindBy(id = DropdownsPractiseData.PASSENGERS_ADULT_SUBTRACT_ID)
+    @FindBy(id = DropdownsPracticeData.PASSENGERS_ADULT_SUBTRACT_ID)
         private WebElement subtractAdultPassengerButton;
 
-    @FindBy(id = DropdownsPractiseData.PASSENGERS_ADULT_AMOUNT_ID)
+    @FindBy(id = DropdownsPracticeData.PASSENGERS_ADULT_AMOUNT_ID)
         private WebElement currentAmountOfAdultPassengers;
 
-    @FindBy(id = DropdownsPractiseData.PASSENGERS_DONE_BTN_ID)
+    @FindBy(id = DropdownsPracticeData.PASSENGERS_DONE_BTN_ID)
         private WebElement passengersOptionsDoneBtn;
 
-    @FindBy(id = DropdownsPractiseData.DEPARTURE_CITY_INPUT_ID)
+    @FindBy(id = DropdownsPracticeData.DEPARTURE_CITY_INPUT_ID)
         private WebElement departureCityInput;
 
-    @FindBy(xpath = DropdownsPractiseData.DEPARTURE_CITIES_LIST_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.DEPARTURE_CITIES_LIST_XPATH)
         private WebElement departureCitiesList;
 
-    @FindBy(xpath = DropdownsPractiseData.ARRIVAL_CITIES_LIST_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.ARRIVAL_CITIES_LIST_XPATH)
         private WebElement arrivalCitiesList;
 
-    @FindBy(id = DropdownsPractiseData.ARRIVAL_CITY_INPUT_ID)
+    @FindBy(id = DropdownsPracticeData.ARRIVAL_CITY_INPUT_ID)
         private WebElement arrivalCityInput;
 
-    @FindBy(id = DropdownsPractiseData.ARRIVAL_CITY_INPUT_ARROW_ID)
+    @FindBy(id = DropdownsPracticeData.ARRIVAL_CITY_INPUT_ARROW_ID)
         private WebElement arrivalCityInputArrow;
 
-    @FindBy(id = DropdownsPractiseData.COUNTRY_INPUT_ID)
+    @FindBy(id = DropdownsPracticeData.COUNTRY_INPUT_ID)
         private WebElement countryInput;
 
-    @FindBy(xpath = DropdownsPractiseData.COUNTRY_AUTOSUGGESTION_LIST_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.COUNTRY_AUTOSUGGESTION_LIST_XPATH)
         private List<WebElement> countryAutosuggestionList;
 
-    @FindBy(xpath = DropdownsPractiseData.DISCOUNT_OPTIONS_CHECKBOXES_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.DISCOUNT_OPTIONS_CHECKBOXES_XPATH)
         private WebElement discountOptionsCheckboxes;
 
-    @FindBy(xpath = DropdownsPractiseData.DISCOUNT_CHECKBOXES_TYPE_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.DISCOUNT_CHECKBOXES_TYPE_XPATH)
         private List<WebElement> discountCheckboxes;
 
-    @FindBy(xpath = DropdownsPractiseData.TRIP_ONEWAY_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.TRIP_ONEWAY_XPATH)
         private WebElement oneWayTripRadio;
 
-    @FindBy(xpath = DropdownsPractiseData.TRIP_ROUND_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.TRIP_ROUND_XPATH)
         private WebElement roundTripRadio;
 
-    @FindBy(xpath = DropdownsPractiseData.TRIP_MULTI_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.TRIP_MULTI_XPATH)
         private WebElement multicityTripRadio;
 
-    @FindBy(xpath = DropdownsPractiseData.DEPARTURE_DATE_BUTTON_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.DEPARTURE_DATE_BUTTON_XPATH)
         private WebElement departureDateButton;
 
-    @FindBy(id = DropdownsPractiseData.DATE_PICKER_ID)
+    @FindBy(id = DropdownsPracticeData.DATE_PICKER_ID)
         private WebElement datePicker;
 
-    @FindBy(xpath = DropdownsPractiseData.CURRENT_DATE_HIGHLIGHTED_XPATH)
+    @FindBy(xpath = DropdownsPracticeData.CURRENT_DATE_HIGHLIGHTED_XPATH)
         private WebElement currentDateHighlighted;
 
-    @FindBy(id = DropdownsPractiseData.ACTUAL_DEPARTURE_DATE_ID)
+    @FindBy(id = DropdownsPracticeData.ACTUAL_DEPARTURE_DATE_ID)
         private WebElement actualDepartureDate;
 
-    @FindBy(id = DropdownsPractiseData.RETURN_DATE_BOX_ID)
+    @FindBy(id = DropdownsPracticeData.RETURN_DATE_BOX_ID)
         private WebElement returnDateBox;
 
-    @FindBy(id = DropdownsPractiseData.SEARCH_BUTTON_ID)
+    @FindBy(id = DropdownsPracticeData.SEARCH_BUTTON_ID)
         private WebElement searchButton;
 
 
@@ -252,24 +252,24 @@ public class DropdownsPractisePage {
         specialOption = specialOption.toLowerCase(Locale.ROOT);
         switch (specialOption) {
             case "family and friends":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).isSelected());
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).isSelected());
                 break;
             case "senior citizen":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_SENIOR_ID_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_SENIOR_ID_ENDING + ")]")).isSelected());
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_SENIOR_ID_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_SENIOR_ID_ENDING + ")]")).isSelected());
                 break;
             case "indian armed forces":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_INDIAN_AF_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_INDIAN_AF_ENDING + ")]")).isSelected());
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_INDIAN_AF_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_INDIAN_AF_ENDING + ")]")).isSelected());
                 break;
             case "student":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_STUDENT_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_STUDENT_ENDING + ")]")).isSelected());
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_STUDENT_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_STUDENT_ENDING + ")]")).isSelected());
                 break;
             case "unaccompanied minor":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPractiseData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).isSelected());
+                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).isSelected());
                 break;
         }
     }

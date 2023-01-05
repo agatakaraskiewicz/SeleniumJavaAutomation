@@ -1,6 +1,6 @@
 package com.example.seleniumjavaautomation.data;
 
-public class DropdownsPractiseData {
+public class DropdownsPracticeData {
     public static final String URL = "https://rahulshettyacademy.com/dropdownsPractise/";
     public static final String URL_SEARCH_MODE = "https://rahulshettyacademy.com/dropdownsPractise/#search.aspx?mode=search";
     public static final String PAGE_TITLE = "QAClickJet - Flight Booking for Domestic and International, Cheap Air Tickets";

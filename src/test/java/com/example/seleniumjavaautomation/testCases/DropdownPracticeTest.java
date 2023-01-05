@@ -1,9 +1,9 @@
 package com.example.seleniumjavaautomation.testCases;
 
 import com.example.seleniumjavaautomation.library.GlobalMethods;
-import com.example.seleniumjavaautomation.data.DropdownsPractiseData;
+import com.example.seleniumjavaautomation.data.DropdownsPracticeData;
 import com.example.seleniumjavaautomation.library.Browser;
-import com.example.seleniumjavaautomation.pages.DropdownsPractisePage;
+import com.example.seleniumjavaautomation.pages.DropdownsPracticePage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,27 +14,27 @@ import java.util.stream.IntStream;
 import static com.example.seleniumjavaautomation.library.Browser.*;
 import static io.qameta.allure.Allure.step;
 
-public class DropdownPractiseTest {
+public class DropdownPracticeTest {
 
-    private DropdownsPractisePage dropdownPractisePage;
+    private DropdownsPracticePage dropdownPractisePage;
     private GlobalMethods globalMethods;
 
 
     @BeforeEach
     public void openBrowserAndCheck() {
         //initialize WebDriver
-        Browser.StartBrowser("Chrome", DropdownsPractiseData.URL);
+        Browser.StartBrowser("Chrome", DropdownsPracticeData.URL);
 
         //initialize other used classes
-        dropdownPractisePage = PageFactory.initElements(Browser.getDriver(), DropdownsPractisePage.class);
+        dropdownPractisePage = PageFactory.initElements(Browser.getDriver(), DropdownsPracticePage.class);
         globalMethods = PageFactory.initElements(Browser.getDriver(), GlobalMethods.class);
 
         step("Check if the tab has correct name", () -> {
-            Browser.checkTitle(DropdownsPractiseData.PAGE_TITLE);
+            Browser.checkTitle(DropdownsPracticeData.PAGE_TITLE);
         });
 
         step("Check if the url is correct", () -> {
-            Browser.checkUrl(DropdownsPractiseData.URL);
+            Browser.checkUrl(DropdownsPracticeData.URL);
         });
     }
 
@@ -196,7 +196,7 @@ public class DropdownPractiseTest {
 
         step("Click on search button and verify if the URL changed", () -> {
             dropdownPractisePage.clickOnSearch();
-            checkUrl(DropdownsPractiseData.URL_SEARCH_MODE);
+            checkUrl(DropdownsPracticeData.URL_SEARCH_MODE);
         });
     }
 

@@ -164,7 +164,7 @@ public class DropdownPractiseTest {
 
     @Test
     @Tag("E2E")
-    @DisplayName("Verify if you can search for One Way Trip from Jaipur to Goa for 3 Adults")
+    @DisplayName("Verify if you can search for One Way Trip from Jaipur to Goa for 3 Adults (USD)")
     public void searchOneWayJaipurGoa3Adults() {
         step("Change trip type to 'One Way'", () -> {
             dropdownPractisePage.changeTripTypeTo("One Way");
@@ -178,6 +178,25 @@ public class DropdownPractiseTest {
         step("Change arrival city to Goa", () -> {
             //arrival city drop-down is opened automatically (asserted in previous step)
             dropdownPractisePage.pickArrivalCity("Goa (GOI)");
+        });
+
+        step("Change departure date to current day", () -> {
+           dropdownPractisePage.changeDepartureDateToCurrent();
+        });
+
+        step("Change number od adult passengers to 3", () ->{
+            dropdownPractisePage.openPassengersInput();
+           dropdownPractisePage.changeAmountOfAdultsTo(3);
+            dropdownPractisePage.applyPassengersChanges();
+        });
+
+        step("Change currency to USD", () -> {
+            dropdownPractisePage.changeStaticCurrencyByText("USD");
+        });
+
+        step("Click on search button and verify if the URL changed", () -> {
+            dropdownPractisePage.clickOnSearch();
+            checkUrl(DropdownsPractiseData.URL_SEARCH_MODE);
         });
     }
 

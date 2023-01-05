@@ -2,6 +2,7 @@ package com.example.seleniumjavaautomation.data;
 
 public class DropdownsPractiseData {
     public static final String URL = "https://rahulshettyacademy.com/dropdownsPractise/";
+    public static final String URL_SEARCH_MODE = "https://rahulshettyacademy.com/dropdownsPractise/#search.aspx?mode=search";
     public static final String PAGE_TITLE = "QAClickJet - Flight Booking for Domestic and International, Cheap Air Tickets";
     public static final String CURRENCY_DROPDOWN_XPATH = "//select[@id='ctl00_mainContent_DropDownListCurrency']";
     public static final String PASSENGERS_INPUT_XPATH = "//div[@id='divpaxinfo']";
@@ -32,4 +33,5 @@ public class DropdownsPractiseData {
     public static final String CURRENT_DATE_HIGHLIGHTED_XPATH = "//a[contains(@class, 'ui-state-highlight')]";
     public static final String ACTUAL_DEPARTURE_DATE_ID = "view_fulldate_id_1";
     public static final String RETURN_DATE_BOX_ID = "Div1";
+    public static final String SEARCH_BUTTON_ID = "ctl00_mainContent_btn_FindFlights";
 }

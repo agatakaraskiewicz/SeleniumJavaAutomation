@@ -87,6 +87,9 @@ public class DropdownsPractisePage {
     @FindBy(id = DropdownsPractiseData.RETURN_DATE_BOX_ID)
         private WebElement returnDateBox;
 
+    @FindBy(id = DropdownsPractiseData.SEARCH_BUTTON_ID)
+        private WebElement searchButton;
+
 
     public void changeStaticCurrencyByIndex(int currencyIndex){
         Select currencyDropdown = new Select(staticCurrencyDropdown);
@@ -316,5 +319,10 @@ public class DropdownsPractisePage {
         } else { //not active
             return returnDateBox.getAttribute("style").contains("opacity: 0.5;");
         }
+    }
+
+    public void clickOnSearch() throws InterruptedException {
+        searchButton.click();
+        Thread.sleep(2000);
     }
 }

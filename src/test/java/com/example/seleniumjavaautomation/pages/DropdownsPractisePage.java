@@ -212,17 +212,11 @@ public class DropdownsPractisePage {
     }
 
     public void pickArrivalCity(String arrivalCity) throws InterruptedException {
-        Thread.sleep(3000);
-        System.out.println("1");
-        arrivalCitiesList.click();
-        System.out.println("2");
-        System.out.println(arrivalCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + arrivalCity + "')]")));
-
-        arrivalCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + arrivalCity + "')]")).click();
+        //it has to sendKeys as there were issues with clicking on the city option (elements not interactable)
+        arrivalCityInput.sendKeys(arrivalCity);
         Thread.sleep(1000);
-        System.out.println("3");
         assertFalse(arrivalCitiesList.isDisplayed());
-        assertEquals(arrivalCityInput.getAttribute("selectedtext"), arrivalCity);
+        assertEquals(arrivalCityInput.getAttribute("value"), arrivalCity);
         assertTrue(datePicker.isDisplayed());
     }
 
@@ -317,7 +311,7 @@ public class DropdownsPractisePage {
 
     //method checks if the state of the return date box is as expected; returns boolean; could be used as condition in assertions
     public boolean checkReturnDateBoxState(String expectedState) {
-        if (expectedState == "active"){
+        if (expectedState.equals("active")){
             return returnDateBox.getAttribute("style").contains("opacity: 1;");
         } else { //not active
             return returnDateBox.getAttribute("style").contains("opacity: 0.5;");

@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import static java.time.ZoneOffset.UTC;
-
 public class GlobalMethods {
 
     //method generates a random integer in range of minimum and maximum number
@@ -39,5 +37,4 @@ public class GlobalMethods {
         String actualAlertText = Browser.getDriver().switchTo().alert().getText();
         return actualAlertText.contains(expectedText);
     }
-
 }

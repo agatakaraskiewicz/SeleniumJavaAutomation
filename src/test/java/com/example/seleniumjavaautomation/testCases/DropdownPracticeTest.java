@@ -4,9 +4,13 @@ import com.example.seleniumjavaautomation.library.GlobalMethods;
 import com.example.seleniumjavaautomation.data.DropdownsPracticeData;
 import com.example.seleniumjavaautomation.library.Browser;
 import com.example.seleniumjavaautomation.pages.DropdownsPracticePage;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -31,10 +35,12 @@ public class DropdownPracticeTest {
 
         step("Check if the tab has correct name", () -> {
             Browser.checkTitle(DropdownsPracticeData.PAGE_TITLE);
+            Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         });
 
         step("Check if the url is correct", () -> {
             Browser.checkUrl(DropdownsPracticeData.URL);
+            Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         });
     }
 
@@ -137,7 +143,6 @@ public class DropdownPracticeTest {
     }
 
     @Test
-    @Tag("radio_buttons")
     @Tag("calendar")
     @DisplayName("Verify if there is possibility to set departure date to current day")
     public void changeDepartureDateToCurrentDay() {

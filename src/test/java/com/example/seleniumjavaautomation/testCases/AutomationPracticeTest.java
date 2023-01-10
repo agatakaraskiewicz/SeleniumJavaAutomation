@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static com.example.seleniumjavaautomation.library.Browser.closeDriver;
 import static io.qameta.allure.Allure.step;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AutomationPracticeTest {
 
@@ -43,7 +44,7 @@ public class AutomationPracticeTest {
 
         step("Click on 'Alert' button and verify if there is provided name on it", () -> {
             autoPracticePage.clickAlertButton();
-            globalMethods.checkIfAlertContainsText("Agata");
+            assertTrue(globalMethods.checkIfAlertContainsText("Agata"));
         });
 
         step("Close the alert pop-up - accept", () -> {
@@ -61,7 +62,7 @@ public class AutomationPracticeTest {
 
         step("Click on 'Confirm' button and verify if there is provided name on it", () -> {
             autoPracticePage.clickConfirmButton();
-            globalMethods.checkIfAlertContainsText("Blikle");
+            assertTrue(globalMethods.checkIfAlertContainsText("Blikle"));
         });
 
         step("Close the alert pop-up - dismiss", () -> {

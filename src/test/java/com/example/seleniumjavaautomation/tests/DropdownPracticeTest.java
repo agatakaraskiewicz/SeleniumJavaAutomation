@@ -1,4 +1,4 @@
-package com.example.seleniumjavaautomation.testCases;
+package com.example.seleniumjavaautomation.tests;
 
 import com.example.seleniumjavaautomation.library.GlobalMethods;
 import com.example.seleniumjavaautomation.data.DropdownsPracticeData;

@@ -25,6 +25,7 @@ There are two pages under test and you can find there following test cases:
     - Verify if auto-suggestive dropdown presents correct options to the User
   - checkboxes
     - Verify if there is possibility to pick discount options
+    - Verify if there is possibility to pick discount options - parametrized tests (run one by one)
   - calendar
     - Verify if there is possibility to set departure date to current day
   - radio buttons

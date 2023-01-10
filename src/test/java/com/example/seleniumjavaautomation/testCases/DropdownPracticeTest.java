@@ -6,6 +6,8 @@ import com.example.seleniumjavaautomation.library.Browser;
 import com.example.seleniumjavaautomation.pages.DropdownsPracticePage;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.PageFactory;
@@ -133,7 +135,7 @@ public class DropdownPracticeTest {
             dropdownPractisePage.checkNumberOfCheckboxes(6);
         });
 
-        step("Check 'Friends and Family' checkbox", () -> {
+        step("Check all checkboxes", () -> {
             dropdownPractisePage.discountOptionPickAndClick("Family and Friends");
             dropdownPractisePage.discountOptionPickAndClick("Senior Citizen");
             dropdownPractisePage.discountOptionPickAndClick("Indian Armed Forces");
@@ -141,6 +143,15 @@ public class DropdownPracticeTest {
             dropdownPractisePage.discountOptionPickAndClick("Unaccompanied Minor");
         });
     }
+
+    @ParameterizedTest(name = "Verify if there is possibility to pick discount options - parametrized tests (run one by one)")
+    @CsvSource({"Family and Friends", "Senior Citizen", "Indian Armed Forces", "Student", "Unaccompanied Minor"})
+    public void pickDiscountOptionsParametrized(String discountOption) {
+        step("Check " + discountOption + " checkbox and verify if it is checked", () -> {
+            dropdownPractisePage.discountOptionPickAndClick(discountOption);
+        });
+    }
+
 
     @Test
     @Tag("calendar")

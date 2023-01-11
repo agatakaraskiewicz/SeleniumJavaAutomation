@@ -252,24 +252,29 @@ public class DropdownsPracticePage {
         specialOption = specialOption.toLowerCase(Locale.ROOT);
         switch (specialOption) {
             case "family and friends":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]")).isSelected());
+                String xpathEndingFnM = "//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_FRIENDS_AND_FAM_ID_ENDING + ")]";
+                discountOptionsCheckboxes.findElement(By.xpath(xpathEndingFnM)).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath(xpathEndingFnM)).isSelected());
                 break;
             case "senior citizen":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_SENIOR_ID_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_SENIOR_ID_ENDING + ")]")).isSelected());
+                String xpathEndingSenior = "//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_SENIOR_ID_ENDING + ")]";
+                discountOptionsCheckboxes.findElement(By.xpath(xpathEndingSenior)).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath(xpathEndingSenior)).isSelected());
                 break;
             case "indian armed forces":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_INDIAN_AF_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_INDIAN_AF_ENDING + ")]")).isSelected());
+                String xpathEndingArmed = "//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_INDIAN_AF_ENDING + ")]";
+                discountOptionsCheckboxes.findElement(By.xpath(xpathEndingArmed)).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath(xpathEndingArmed)).isSelected());
                 break;
             case "student":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_STUDENT_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_STUDENT_ENDING + ")]")).isSelected());
+                String xpathEndingStudent = "//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_STUDENT_ENDING + ")]";
+                discountOptionsCheckboxes.findElement(By.xpath(xpathEndingStudent)).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath(xpathEndingStudent)).isSelected());
                 break;
             case "unaccompanied minor":
-                discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).click();
-                assertTrue(discountOptionsCheckboxes.findElement(By.xpath("//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_LONELY_MINOR_ENDING + ")]")).isSelected());
+                String xpathEndingMinor = "//descendant::input[contains(@id," + DropdownsPracticeData.DISCOUNT_LONELY_MINOR_ENDING + ")]";
+                discountOptionsCheckboxes.findElement(By.xpath(xpathEndingMinor)).click();
+                assertTrue(discountOptionsCheckboxes.findElement(By.xpath(xpathEndingMinor)).isSelected());
                 break;
         }
     }

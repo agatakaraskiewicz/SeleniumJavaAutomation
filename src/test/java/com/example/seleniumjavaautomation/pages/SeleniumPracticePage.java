@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,8 +20,8 @@ public class SeleniumPracticePage {
     @FindBy(xpath = SeleniumPracticeData.PRODUCTS_XPATH)
         private List<WebElement> productsList;
 
-//    @FindBy(xpath = SeleniumPracticeData.ADD_TO_CART_BUTTON_XPATH)
-//        private WebElement addToCartButton;
+    @FindBy(xpath = SeleniumPracticeData.CART_INFO_XPATH)
+        private WebElement cartInfo;
 
 
 
@@ -35,7 +35,7 @@ public class SeleniumPracticePage {
     }
 
     public void checkNumberOfProducts(int expectedNumberOfProducts) {
-        assertEquals(expectedNumberOfProducts, productsList.size());
+        assertEquals(expectedNumberOfProducts, productsList.size(), MessageFormat.format("There is {0} instead of {1}", productsList.size(), expectedNumberOfProducts));
     }
 
     public void verifyProductsOnThePage(List<String> expectedProducts) {
@@ -46,10 +46,14 @@ public class SeleniumPracticePage {
             String productName = productText[0].trim();
             actualProductsNames.add(productName);
         }
-        System.out.println(actualProductsNames);
+
         //check if each expected name is present in the list of actual products names
         for (String expectedProduct:expectedProducts) {
-            assertTrue(actualProductsNames.contains(expectedProduct));
+            assertTrue(actualProductsNames.contains(expectedProduct), "There is no " + expectedProduct + " on the list.");
         }
+    }
+
+    public void checkCartInfo(String expectedCartInfo) throws InterruptedException {
+        assertEquals(expectedCartInfo, cartInfo.getText(), MessageFormat.format("Expected:\n{0} \n Actual:\n{1}", expectedCartInfo, cartInfo.getText()));
     }
 }

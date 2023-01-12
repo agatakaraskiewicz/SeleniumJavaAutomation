@@ -58,10 +58,14 @@ public class SeleniumPracticeTest {
     @DisplayName("Verify if there is possibility to add desired products to the cart")
     public void addToCart() {
         step("Add all the products from a list to the cart and check if the button changed its text to 'ADDED'", () -> {
-            List<String> productsToBeAdded = Arrays.asList("Cucumber", "Beetroot", "Cauliflower", "Brinjal - 1 Kg", "Mushroom - 1 Kg", "Apple - 1 Kg", "Grapes", "Raspberry - 1/4 Kg");
+            List<String> productsToBeAdded = Arrays.asList("Cucumber", "Beetroot", "Cauliflower", "Brinjal - 1 Kg",
+                                                            "Mushroom - 1 Kg", "Apple - 1 Kg", "Grapes", "Raspberry - 1/4 Kg");
             seleniumPracticePage.addListOfProductsToCart(productsToBeAdded);
         });
 
+        step("Check if the cart info displays correct number of items and total price", () -> {
+            seleniumPracticePage.checkCartInfo("Items : 8\n" + "Price : 542");
+        });
     }
 
     @AfterEach

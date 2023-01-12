@@ -37,11 +37,31 @@ public class SeleniumPracticeTest {
     }
 
     @Test
+    @Tag("products")
+    @DisplayName("Verify if the list of products is correct")
+    public void checkProducts(){
+        step("Check if there is correct number of products on the page", () -> {
+            seleniumPracticePage.checkNumberOfProducts(30);
+        });
+
+        step("Verify if there are all expected products on the page", () -> {
+            List<String> productsListToBePresent = Arrays.asList("Brocolli", "Cauliflower", "Cucumber", "Beetroot",
+                    "Carrot", "Tomato", "Beans", "Brinjal", "Mushroom", "Potato", "Pumpkin", "Corn", "Onion",
+                    "Apple", "Banana", "Grapes", "Mango", "Musk Melon", "Orange", "Pears", "Pomegranate", "Raspberry",
+                    "Strawberry", "Water Melon", "Almonds", "Pista", "Nuts Mixture", "Cashews", "Walnuts");
+            seleniumPracticePage.verifyProductsOnThePage(productsListToBePresent);
+        });
+    }
+
+    @Test
     @Tag("add_to_cart")
     @DisplayName("Verify if there is possibility to add desired products to the cart")
     public void addToCart() {
-        List<String> productsToBeAdded = Arrays.asList("Cucumber", "Beetroot", "Cauliflower", "Brinjal - 1 Kg", "Mushroom - 1 Kg", "Apple - 1 Kg", "Grapes", "Raspberry - 1/4 Kg");
-        seleniumPracticePage.addListOfProductsToCart(productsToBeAdded);
+        step("Add all the products from a list to the cart and check if the button changed its text to 'ADDED'", () -> {
+            List<String> productsToBeAdded = Arrays.asList("Cucumber", "Beetroot", "Cauliflower", "Brinjal - 1 Kg", "Mushroom - 1 Kg", "Apple - 1 Kg", "Grapes", "Raspberry - 1/4 Kg");
+            seleniumPracticePage.addListOfProductsToCart(productsToBeAdded);
+        });
+
     }
 
     @AfterEach

@@ -38,3 +38,9 @@ There are two pages under test and you can find there following test cases:
   - browser alerts
     - Verify if provided name appears on the Alert pop-up
     - Verify if there is possibility to not confirm on pop-up
+
+**3. Selenium Practise Page (simulation of online grocery shop)**
+  - products
+    - Verify if the list of products is correct
+  - adding products to the cart
+    - Verify if there is possibility to add desired products to the cart

@@ -3,6 +3,7 @@ package com.example.seleniumjavaautomation.tests;
 import com.example.seleniumjavaautomation.data.SeleniumPracticeData;
 import com.example.seleniumjavaautomation.library.Browser;
 import com.example.seleniumjavaautomation.library.GlobalMethods;
+import com.example.seleniumjavaautomation.library.Waits;
 import com.example.seleniumjavaautomation.pages.SeleniumPracticePage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ public class SeleniumPracticeTest {
 
     private SeleniumPracticePage seleniumPracticePage;
     private GlobalMethods globalMethods;
+    private Waits waits;
 
     @BeforeEach
     public void openBrowserAndCheck() {
@@ -26,6 +28,7 @@ public class SeleniumPracticeTest {
         //initialize other used classes
         seleniumPracticePage = PageFactory.initElements(Browser.getDriver(), SeleniumPracticePage.class);
         globalMethods = PageFactory.initElements(Browser.getDriver(), GlobalMethods.class);
+        waits = PageFactory.initElements(Browser.getDriver(), Waits.class);
 
         step("Check if the tab has correct name", () -> {
             Browser.checkTitle(SeleniumPracticeData.SELENIUM_PRACTICE_TITLE);
@@ -65,6 +68,15 @@ public class SeleniumPracticeTest {
 
         step("Check if the cart info displays correct number of items and total price", () -> {
             seleniumPracticePage.checkCartInfo("Items : 8\n" + "Price : 542");
+        });
+
+        step("Click on the cart icon and then on the 'Proceed to checkout' button", () -> {
+            seleniumPracticePage.proceedToCheckout();
+        });
+
+        step("Check if the url is correct", () -> {
+            waits.waitUntilUrlContains("/cart", 5);
+            Browser.checkUrl(SeleniumPracticeData.CART_PAGE_URL);
         });
     }
 

@@ -23,6 +23,12 @@ public class SeleniumPracticePage {
     @FindBy(xpath = SeleniumPracticeData.CART_INFO_XPATH)
         private WebElement cartInfo;
 
+    @FindBy(xpath = SeleniumPracticeData.CART_ICON_XPATH)
+        private WebElement cartIcon;
+
+    @FindBy(xpath = SeleniumPracticeData.PROCEED_TO_CHECKOUT_BUTTON_XPATH)
+        private WebElement proceedToCheckoutButton;
+
 
 
     public void addListOfProductsToCart(List<String> productsToBeAdded) {
@@ -53,7 +59,12 @@ public class SeleniumPracticePage {
         }
     }
 
-    public void checkCartInfo(String expectedCartInfo) throws InterruptedException {
+    public void checkCartInfo(String expectedCartInfo) {
         assertEquals(expectedCartInfo, cartInfo.getText(), MessageFormat.format("Expected:\n{0} \n Actual:\n{1}", expectedCartInfo, cartInfo.getText()));
+    }
+
+    public void proceedToCheckout() {
+        cartIcon.click();
+        proceedToCheckoutButton.click();
     }
 }

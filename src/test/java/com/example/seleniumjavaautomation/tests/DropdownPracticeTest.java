@@ -3,6 +3,7 @@ package com.example.seleniumjavaautomation.tests;
 import com.example.seleniumjavaautomation.library.GlobalMethods;
 import com.example.seleniumjavaautomation.data.DropdownsPracticeData;
 import com.example.seleniumjavaautomation.library.Browser;
+import com.example.seleniumjavaautomation.library.Waits;
 import com.example.seleniumjavaautomation.pages.DropdownsPracticePage;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
@@ -24,6 +25,7 @@ public class DropdownPracticeTest {
 
     private DropdownsPracticePage dropdownPractisePage;
     private GlobalMethods globalMethods;
+    private Waits waits;
 
 
     @BeforeEach
@@ -34,6 +36,7 @@ public class DropdownPracticeTest {
         //initialize other used classes
         dropdownPractisePage = PageFactory.initElements(Browser.getDriver(), DropdownsPracticePage.class);
         globalMethods = PageFactory.initElements(Browser.getDriver(), GlobalMethods.class);
+        waits = PageFactory.initElements(Browser.getDriver(), Waits.class);
 
         step("Check if the tab has correct name", () -> {
             Browser.checkTitle(DropdownsPracticeData.PAGE_TITLE);
@@ -212,6 +215,7 @@ public class DropdownPracticeTest {
 
         step("Click on search button and verify if the URL changed", () -> {
             dropdownPractisePage.clickOnSearch();
+            waits.waitUntilUrlContains("search", 5);
             checkUrl(DropdownsPracticeData.URL_SEARCH_MODE);
         });
     }

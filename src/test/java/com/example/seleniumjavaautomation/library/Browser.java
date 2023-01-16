@@ -3,7 +3,6 @@ package com.example.seleniumjavaautomation.library;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Browser {
@@ -25,12 +24,16 @@ public class Browser {
     }
 
     public static void closeDriver() {
-        driver.close();
+        try {
+            driver.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void checkUrl(String url){
         String actualUrl = driver.getCurrentUrl();
-        assertEquals(actualUrl, url);
+        assertEquals(url, actualUrl);
     }
 
     public static void checkTitle(String title){

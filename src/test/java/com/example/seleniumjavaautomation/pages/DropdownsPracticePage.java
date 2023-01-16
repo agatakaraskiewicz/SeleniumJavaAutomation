@@ -2,6 +2,7 @@ package com.example.seleniumjavaautomation.pages;
 
 import com.example.seleniumjavaautomation.data.DropdownsPracticeData;
 import com.example.seleniumjavaautomation.library.GlobalMethods;
+import com.example.seleniumjavaautomation.library.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,6 +57,9 @@ public class DropdownsPracticePage {
 
     @FindBy(xpath = DropdownsPracticeData.COUNTRY_AUTOSUGGESTION_LIST_XPATH)
         private List<WebElement> countryAutosuggestionList;
+
+    @FindBy(xpath = DropdownsPracticeData.COUNTRY_AUTOSUGGESTION_LIST_XPATH)
+        private WebElement countryAutosuggestionElement;
 
     @FindBy(xpath = DropdownsPracticeData.DISCOUNT_OPTIONS_CHECKBOXES_XPATH)
         private WebElement discountOptionsCheckboxes;
@@ -149,10 +153,10 @@ public class DropdownsPracticePage {
     }
 
     //clicks on the passengers input to open drop-down and then asserts if the drop-down is visible
-    public void openPassengersInput() throws InterruptedException {
+    public void openPassengersInput() {
         passengersInput.click();
         //here is small sleep needed - otherwise the buttons are not active (needed for other methods)
-        Thread.sleep(1000);
+        Waits.waitUntilElementAppears(passengersOptions, 5);
         assertTrue(passengersOptions.isDisplayed());
     }
 
@@ -167,6 +171,7 @@ public class DropdownsPracticePage {
     //only after openPassengersInput()
     //clicks on 'Done' button to apply the changes and asserts if passengers drop-down was closed
     public void applyPassengersChanges() {
+        Waits.waitUntilElementAppears(passengersOptionsDoneBtn, 5);
         passengersOptionsDoneBtn.click();
         assertFalse(passengersOptions.isDisplayed());
     }
@@ -176,12 +181,14 @@ public class DropdownsPracticePage {
     //it adds or subtracts passengers. If the provided amount is <= 0 then it sets the desired to the lowest possible
     //If the provided amount is >= 10 then it is set to the desired highest possible + console info
     public void changeAmountOfAdultsTo(int desiredAmount) {
+        Waits.waitUntilElementAppears(currentAmountOfAdultPassengers, 5);
         int initialAdultsAmount = Integer.parseInt(currentAmountOfAdultPassengers.getText());
 
         while (initialAdultsAmount != desiredAmount) {
             if (initialAdultsAmount > desiredAmount && desiredAmount > 0 && desiredAmount < 10){
                 subtractAdultPassengerButton.click();
             } else if (initialAdultsAmount < desiredAmount && desiredAmount > 0 && desiredAmount < 10){
+                Waits.waitUntilElementIsClickable(addAdultPassengerButton, 5);
                 addAdultPassengerButton.click();
             } else if (desiredAmount >= 10) {
                 //for now highest possible amount of adults is 9
@@ -205,33 +212,33 @@ public class DropdownsPracticePage {
         assertTrue(departureCitiesList.isDisplayed());
     }
 
-    public void pickDepartureCity(String departureCity) throws InterruptedException {
+    public void pickDepartureCity(String departureCity) {
         departureCitiesList.findElement(By.xpath("//descendant::a[contains(text(), '" + departureCity + "')]")).click();
-        Thread.sleep(1000);
+        Waits.waitUntilElementIsNotVisible(departureCitiesList, 5);
         assertFalse(departureCitiesList.isDisplayed());
         assertEquals(departureCityInput.getAttribute("selectedtext"), departureCity);
         assertTrue(arrivalCitiesList.isDisplayed());
 
     }
 
-    public void pickArrivalCity(String arrivalCity) throws InterruptedException {
+    public void pickArrivalCity(String arrivalCity) {
         //it has to sendKeys as there were issues with clicking on the city option (elements not interactable)
         arrivalCityInput.sendKeys(arrivalCity);
-        Thread.sleep(1000);
+        Waits.waitUntilElementIsNotVisible(arrivalCitiesList, 5);
         assertFalse(arrivalCitiesList.isDisplayed());
         assertEquals(arrivalCityInput.getAttribute("value"), arrivalCity);
         assertTrue(datePicker.isDisplayed());
     }
 
-    public void closeArrivalCityDropDown() throws InterruptedException {
+    public void closeArrivalCityDropDown() {
         arrivalCityInputArrow.click();
-        Thread.sleep(1000);
+        Waits.waitUntilElementIsNotVisible(arrivalCitiesList, 5);
         assertFalse(arrivalCitiesList.isDisplayed());
     }
 
-    public void countryTypeToSelectPoland() throws InterruptedException {
+    public void countryTypeToSelectPoland() {
         countryInput.sendKeys("pol");
-        Thread.sleep(3000);
+        Waits.waitUntilElementAppears(countryAutosuggestionElement, 5);
 
         //create list of actual and suggested countries and compare them
         List<String> actualSuggestedList = GlobalMethods.makeListOfTextInElements(countryAutosuggestionList);
@@ -326,8 +333,7 @@ public class DropdownsPracticePage {
         }
     }
 
-    public void clickOnSearch() throws InterruptedException {
+    public void clickOnSearch() {
         searchButton.click();
-        Thread.sleep(2000);
     }
 }
